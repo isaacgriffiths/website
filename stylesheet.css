@@ -1,0 +1,230 @@
+:root {
+    --x: 0px;
+    --y: 0px;
+  }
+  
+  body, html {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: black;
+    color: white;
+    overflow-x: hidden;
+    min-height: 100vh;
+    cursor: none;
+  }
+  
+  .bg-container {
+    min-height: 100vh;
+    /*background: linear-gradient(to bottom, #000000, #111827);*/
+    background-color: "#000000";
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .content {
+    text-align: center;
+    width: 100%;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 1s ease forwards;
+  }
+  
+  @media (min-width: 640px) {
+    .content {
+      max-width: 85%;
+      padding: 0 16px;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .content {
+      max-width: 896px;
+    }
+  }
+  
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    width: 100%;
+    animation: slideUp 0.8s ease forwards;
+  }
+  
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 3.75rem;
+      margin-bottom: 2.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    h1 {
+      font-size: 4.5rem;
+    }
+  }
+  
+  p {
+    font-size: 1rem;
+    color: #cbd5e1;
+    margin-bottom: 2rem;
+    font-family: monospace;
+    letter-spacing: 0.25em;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: slideUp 0.8s ease 0.2s forwards;
+    opacity: 0;
+  }
+  
+  @media (min-width: 640px) {
+    p {
+      max-width: 300px;
+      letter-spacing: 0.3em;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    p {
+      font-size: 1.25rem;
+      margin-bottom: 2.5rem;
+      max-width: 380px;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    p {
+      font-size: 1.5rem;
+      max-width: 420px;
+    }
+  }
+  
+  .social-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: slideUp 0.8s ease 0.4s forwards;
+    opacity: 0;
+  }
+  
+  .social-links a {
+    padding: 16px;
+    border-radius: 9999px;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 10;
+    margin: 0 8px;
+  }
+  
+  @media (min-width: 640px) {
+    .social-links a {
+      padding: 20px;
+      margin: 0 10px;
+    }
+  }
+  
+  .social-glow {
+    position: absolute;
+    width: 9rem;
+    height: 2.5rem;
+    background-color: rgba(30, 58, 138, 0.05);
+    border-radius: 9999px;
+    filter: blur(24px);
+  }
+  
+  @media (min-width: 640px) {
+    .social-glow {
+      width: 11rem;
+      height: 3rem;
+    }
+  }
+  
+  .social-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  
+  @media (min-width: 640px) {
+    .social-icon {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .social-icon {
+      width: 2rem;
+      height: 2rem;
+    }
+  }
+  
+  .linkedin-icon:hover {
+    fill: url(#linkedin-gradient);
+    filter: drop-shadow(0 0 8px rgba(0, 119, 181, 0.6));
+    transform: scale(1.1);
+  }
+  
+  .tiktok-icon:hover {
+    fill: url(#tiktok-gradient);
+    filter: drop-shadow(0 0 8px rgba(37, 244, 238, 0.6));
+    transform: scale(1.1);
+  }
+  
+  .instagram-icon:hover {
+    fill: url(#instagram-gradient);
+    filter: drop-shadow(0 0 8px rgba(200, 55, 171, 0.6));
+    transform: scale(1.1);
+  }
+  
+  .cursor-dot {
+    position: fixed;
+    pointer-events: none;
+    z-index: 50;
+    left: 0;
+    top: 0;
+    transform: translate(var(--x), var(--y)) translate(-50%, -50%);
+  }
+  
+  .cursor-dot-inner {
+    position: absolute;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+    background-color: #ffffff;
+    box-shadow: 0 0 6px #ffffff, 0 0 12px #ffffff, 0 0 20px #ffffff;
+    mix-blend-mode: difference;
+    filter: brightness(2.5) contrast(2.5);
+  }
+  
+  .cursor-light {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    will-change: transform;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
