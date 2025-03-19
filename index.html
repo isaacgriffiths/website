@@ -55,7 +55,15 @@
     let mousePosition = { x: 0, y: 0 };
     const cursorLight = document.getElementById('cursor-light');
     
+    // Check if device is mobile/tablet
+    const isMobileOrTablet = () => {
+      return window.innerWidth <= 768;
+    };
+    
     function handleMouseMove(e) {
+      // Only update cursor on desktop
+      if (isMobileOrTablet()) return;
+      
       // Update state for the glow effect
       mousePosition.x = e.clientX;
       mousePosition.y = e.clientY;
@@ -74,11 +82,24 @@
     const socialLinks = document.querySelectorAll('.social-links a, .social-links svg, .social-links path');
     socialLinks.forEach(link => {
       link.addEventListener('mouseenter', () => {
-        document.body.style.cursor = 'none';
+        if (!isMobileOrTablet()) {
+          document.body.style.cursor = 'none';
+        }
       });
       link.addEventListener('mouseleave', () => {
-        document.body.style.cursor = 'none';
+        if (!isMobileOrTablet()) {
+          document.body.style.cursor = 'none';
+        }
       });
+    });
+    
+    // Check for window resize to handle responsive changes
+    window.addEventListener('resize', () => {
+      if (isMobileOrTablet()) {
+        document.body.style.cursor = 'auto';
+      } else {
+        document.body.style.cursor = 'none';
+      }
     });
   </script>
 </body>

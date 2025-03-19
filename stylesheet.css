@@ -107,16 +107,28 @@ a {
 
 /* Disable cursor on mobile/tablet */
 @media (max-width: 768px) {
+  * {
+    cursor: auto !important;
+  }
+  
   .cursor-dot, .cursor-light {
-    display: none;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
   }
   
   body, html {
-    cursor: auto;
+    cursor: auto !important;
   }
   
   a {
-    cursor: pointer;
+    cursor: pointer !important;
+  }
+
+  .social-links a:hover, .social-icon:hover {
+    /* Mobile hover effects */
+    transform: scale(1.2);
+    box-shadow: none;
   }
 }
 
@@ -201,15 +213,16 @@ a {
   }
 }
 
-/* Updated hover effects */
+/* Updated hover effects with larger scale */
 .social-icon:hover {
   filter: brightness(2) contrast(1.5);
-  transform: scale(1.1);
+  transform: scale(1.5);
   box-shadow: 0 0 15px 5px rgba(255, 255, 255, 0.7);
 }
 
 .social-links a:hover {
   background-color: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
 }
 
 .cursor-dot {
@@ -277,7 +290,9 @@ a {
   }
   
   .cursor-dot, .cursor-light {
-    display: none;
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
   }
   
   body, html {
