@@ -84,6 +84,10 @@
     animation: slideUp 0.8s ease 0.2s forwards;
     opacity: 0;
   }
+
+  a {
+    cursor: none;
+  }
   
   @media (min-width: 640px) {
     p {
@@ -101,9 +105,21 @@
   }
   
   @media (min-width: 1024px) {
+    body, html {
+      cursor: auto;
+    }
+
+    a {
+      cursor: pointer;
+    }
+
     p {
       font-size: 1.5rem;
       max-width: 420px;
+    }
+
+    .cursor-dot, .cursor-light {
+      display: none;
     }
   }
   
