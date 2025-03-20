@@ -2,14 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Isaac Griffiths - Tech & Automation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Isaac Griffiths</title>
   
   <!-- External stylesheet instead of Tailwind CDN -->
   <link rel="stylesheet" href="styles.css">
   
-  <!-- Favicon: "IG" in Apple system font -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='10' y='70' font-family='-apple-system, BlinkMacSystemFont, SF Pro Display, Helvetica Neue, sans-serif' font-size='80' font-weight='600' fill='white'>IG</text></svg>" type="image/svg+xml">
+  <!-- Favicon: "IG" in San Francisco font -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='10' y='70' font-family='San Francisco, SF Pro Display, -apple-system' font-size='80' font-weight='600' fill='white'>IG</text></svg>" type="image/svg+xml">
 </head>
 <body class="bg-black text-white min-h-screen">
 
@@ -24,10 +25,7 @@
   <div class="h-screen flex flex-col items-center justify-center relative z-10">
     <div class="text-center w-full max-w-[95%] md:max-w-[85%] lg:max-w-[896px] mx-auto px-3 md:px-4 flex flex-col items-center">
       <!-- Main name - larger font -->
-      <h1 id="pushable-name" class="name-title text-center">Isaac Griffiths</h1>
-      
-      <!-- Subtitle - medium size -->
-      <p class="subtitle text-gray-300 text-center tracking-widest">TECH & AUTOMATION</p>
+      <h1 id="pushable-name" class="name-title text-center">Isaac Gr<span class="i-with-dot">i</span>ffiths</h1>
       
       <!-- Social links - smaller and closer together -->
       <div class="social-links flex items-center justify-center mt-3 gap-1">
@@ -63,6 +61,17 @@
   </div>
 
   <script>
+    // Fix for iOS vh units
+    function setIosVhUnit() {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    // Set the vh unit on load and resize
+    window.addEventListener('resize', setIosVhUnit);
+    window.addEventListener('orientationchange', setIosVhUnit);
+    setIosVhUnit();
+    
     // Set up CSS variables for cursor position
     document.documentElement.style.setProperty('--x', '0px');
     document.documentElement.style.setProperty('--y', '0px');
