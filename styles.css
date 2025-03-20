@@ -1,0 +1,169 @@
+/* Tailwind CSS */
+@import 'https://cdn.tailwindcss.com';
+
+/* Custom cursor and layout styles */
+:root {
+  --x: 0px;
+  --y: 0px;
+}
+
+html, body {
+  cursor: none;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: fixed;
+}
+
+.cursor-dot {
+  position: fixed;
+  pointer-events: none;
+  z-index: 50;
+  left: 0;
+  top: 0;
+  transform: translate(var(--x), var(--y)) translate(-50%, -50%);
+}
+
+.cursor-dot-inner {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background-color: #ffffff;
+  box-shadow: 0 0 6px #ffffff, 0 0 12px #ffffff, 0 0 20px #ffffff;
+  mix-blend-mode: difference;
+  filter: brightness(2.5) contrast(2.5);
+}
+
+.cursor-light {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  will-change: transform;
+}
+
+@media (max-width: 768px) {
+  .cursor-dot, .cursor-light {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+  
+  body, html {
+    cursor: auto !important;
+  }
+  
+  a {
+    cursor: pointer !important;
+  }
+}
+
+/* Completely disable all hover effects for social icons */
+.social-icon {
+  transition: none !important;
+}
+
+.social-links a,
+.social-links svg,
+.social-links path,
+.social-icon {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  filter: brightness(1.5) contrast(1.2) !important;
+  opacity: 1 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  outline: none !important;
+  transition: none !important;
+}
+
+.social-links a:hover,
+.social-links svg:hover,
+.social-links path:hover,
+.social-icon:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  filter: brightness(1.5) contrast(1.2) !important;
+  opacity: 1 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  outline: none !important;
+  transition: none !important;
+  scale: 1 !important;
+}
+
+/* Tapered structure styling */
+.name-title {
+  font-size: 5rem;
+  line-height: 1.1;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  letter-spacing: 0.2em;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+  .name-title {
+    font-size: 3.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .name-title {
+    font-size: 2.8rem; 
+  }
+  
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Tailwind utility classes */
+.bg-black { background-color: black; }
+.text-white { color: white; }
+.text-gray-300 { color: #d1d5db; }
+.min-h-screen { min-height: 100vh; }
+.h-screen { height: 100vh; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.relative { position: relative; }
+.z-10 { z-index: 10; }
+.text-center { text-align: center; }
+.w-full { width: 100%; }
+.max-w-\[95\%\] { max-width: 95%; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+.mt-3 { margin-top: 0.75rem; }
+.gap-1 { gap: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.mx-1 { margin-left: 0.25rem; margin-right: 0.25rem; }
+.w-5 { width: 1.25rem; }
+.h-5 { height: 1.25rem; }
+.filter { filter: var(--tw-filter); }
+.brightness-150 { --tw-brightness: brightness(1.5); filter: var(--tw-filter); }
+.contrast-125 { --tw-contrast: contrast(1.25); filter: var(--tw-filter); }
+.tracking-widest { letter-spacing: 0.1em; }
+
+@media (min-width: 768px) {
+  .md\:max-w-\[85\%\] { max-width: 85%; }
+  .md\:px-4 { padding-left: 1rem; padding-right: 1rem; }
+  .md\:w-6 { width: 1.5rem; }
+  .md\:h-6 { height: 1.5rem; }
+}
+
+@media (min-width: 1024px) {
+  .lg\:max-w-\[896px\] { max-width: 896px; }
+} 
