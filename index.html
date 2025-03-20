@@ -50,5 +50,51 @@
     </div>
   </div>
 
+  <script>
+    // Set up CSS variables for cursor position
+    document.documentElement.style.setProperty('--x', '0px');
+    document.documentElement.style.setProperty('--y', '0px');
+    
+    // Mouse position tracking for cursor effects
+    let mousePosition = { x: 0, y: 0 };
+    const cursorLight = document.getElementById('cursor-light');
+    
+    // Check if device is mobile/tablet
+    const isMobileOrTablet = () => {
+      return window.innerWidth <= 768;
+    };
+    
+    function handleMouseMove(e) {
+      // Only update cursor on desktop
+      if (isMobileOrTablet()) return;
+      
+      // Update state for the glow effect
+      mousePosition.x = e.clientX;
+      mousePosition.y = e.clientY;
+      
+      // Update CSS variables for cursor dot
+      document.documentElement.style.setProperty('--x', `${e.clientX}px`);
+      document.documentElement.style.setProperty('--y', `${e.clientY}px`);
+      
+      // Update the cursor light background
+      cursorLight.style.background = `radial-gradient(500px at ${mousePosition.x}px ${mousePosition.y}px, rgba(80, 120, 200, 0.25) 0%, rgba(60, 90, 160, 0.18) 40%, transparent 80%)`;
+    }
+    
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    // Check for window resize to handle responsive changes
+    window.addEventListener('resize', () => {
+      if (isMobileOrTablet()) {
+        document.body.style.cursor = 'auto';
+      } else {
+        document.body.style.cursor = 'none';
+      }
+    });
+    
+    // Set initial cursor state
+    if (!isMobileOrTablet()) {
+      document.body.style.cursor = 'none';
+    }
+  </script>
 </body>
 </html>
