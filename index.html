@@ -4,13 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#000000">
   <title>Isaac Griffiths</title>
   
   <!-- External stylesheet instead of Tailwind CDN -->
   <link rel="stylesheet" href="styles.css">
   
-  <!-- Favicon: "IG" in San Francisco font -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='10' y='70' font-family='San Francisco, SF Pro Display, -apple-system' font-size='80' font-weight='600' fill='white'>IG</text></svg>" type="image/svg+xml">
+  <!-- Favicon: "IG" with platform-specific font -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='10' y='70' font-family='Segoe UI, SF Pro Display, -apple-system, system-ui, Arial' font-size='80' font-weight='600' fill='white'>IG</text></svg>" type="image/svg+xml">
 </head>
 <body class="bg-black text-white min-h-screen">
 
@@ -23,9 +25,12 @@
   <div class="cursor-light" id="cursor-light"></div>
 
   <div class="h-screen flex flex-col items-center justify-center relative z-10">
-    <div class="text-center w-full max-w-[95%] md:max-w-[85%] lg:max-w-[896px] mx-auto px-3 md:px-4 flex flex-col items-center">
+    <div class="text-center w-full max-w-[95%] md:max-w-[85%] lg:max-w-[896px] mx-auto px-3 md:px-4 flex flex-col items-center name-container">
       <!-- Main name - larger font -->
       <h1 id="pushable-name" class="name-title text-center">Isaac Gr<span class="i-with-dot">i</span>ffiths</h1>
+      
+      <!-- White separator bar -->
+      <div class="separator-bar"></div>
       
       <!-- Social links - smaller and closer together -->
       <div class="social-links flex items-center justify-center mt-3 gap-1">
@@ -61,15 +66,53 @@
   </div>
 
   <script>
-    // Fix for iOS vh units
+    // Platform detection for OS-specific font styling
+    (function detectPlatform() {
+      const platform = navigator.platform.toLowerCase();
+      const userAgent = navigator.userAgent.toLowerCase();
+      const isIOS = platform.includes('iphone') || platform.includes('ipad') || 
+                    userAgent.includes('iphone') || userAgent.includes('ipad') ||
+                    (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
+      
+      if (platform.includes('mac') || platform.includes('iphone') || platform.includes('ipad') || 
+          userAgent.includes('mac') || userAgent.includes('iphone') || userAgent.includes('ipad')) {
+        document.documentElement.classList.add('apple-device');
+        
+        // iOS Safari specific fix
+        if (isIOS) {
+          document.documentElement.classList.add('ios-device');
+        }
+      } else if (platform.includes('win') || userAgent.includes('windows')) {
+        document.documentElement.classList.add('windows-device');
+      } else {
+        document.documentElement.classList.add('other-device');
+      }
+    })();
+    
+    // Fix for iOS vh units and vertical alignment
     function setIosVhUnit() {
       let vh = window.innerHeight * 0.01;
       document.documentElement.style.setProperty('--vh', `${vh}px`);
+      
+      // iOS specific fix
+      if (document.documentElement.classList.contains('ios-device')) {
+        const nameContainer = document.querySelector('.name-container');
+        if (nameContainer) {
+          // Adjust top position slightly up from center on iOS
+          if (window.innerHeight < 700) { // Smaller iPhones
+            nameContainer.style.top = '40%';
+          } else {
+            nameContainer.style.top = '45%';
+          }
+        }
+      }
     }
 
     // Set the vh unit on load and resize
     window.addEventListener('resize', setIosVhUnit);
     window.addEventListener('orientationchange', setIosVhUnit);
+    document.addEventListener('DOMContentLoaded', setIosVhUnit);
+    window.addEventListener('load', setIosVhUnit);
     setIosVhUnit();
     
     // Set up CSS variables for cursor position
