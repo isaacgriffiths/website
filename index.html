@@ -19,7 +19,7 @@
   
   <div class="bg-container">
     <div class="content">
-      <h1>Isaac Griffiths</h1>
+      <h1 id="pushable-name">Isaac Griffiths</h1>
       <p>TECH & AUTOMATION</p>
       
       <div class="social-links" style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
@@ -74,6 +74,11 @@
       
       // Update the cursor light background
       cursorLight.style.background = `radial-gradient(500px at ${mousePosition.x}px ${mousePosition.y}px, rgba(80, 120, 200, 0.25) 0%, rgba(60, 90, 160, 0.18) 40%, transparent 80%)`;
+      
+      // Update physics for pushable elements
+      if (!isMobileOrTablet()) {
+        updatePhysics();
+      }
     }
     
     window.addEventListener('mousemove', handleMouseMove);
@@ -101,6 +106,75 @@
         document.body.style.cursor = 'none';
       }
     });
+    
+    // Physics interactions for the name
+    const nameElement = document.getElementById('pushable-name');
+    let namePosition = { x: 0, y: 0 };
+    let nameVelocity = { x: 0, y: 0 };
+    let nameOriginalPosition = { x: 0, y: 0 };
+    
+    function initPhysics() {
+      const nameRect = nameElement.getBoundingClientRect();
+      nameOriginalPosition = {
+        x: nameRect.left + nameRect.width / 2,
+        y: nameRect.top + nameRect.height / 2
+      };
+      namePosition = {...nameOriginalPosition};
+    }
+    
+    function updatePhysics() {
+      // Get the current position of the name
+      const nameRect = nameElement.getBoundingClientRect();
+      const centerX = nameRect.left + nameRect.width / 2;
+      const centerY = nameRect.top + nameRect.height / 2;
+      
+      // Calculate the force vector (direction from cursor to name)
+      const dx = centerX - mousePosition.x;
+      const dy = centerY - mousePosition.y;
+      const distance = Math.sqrt(dx * dx + dy * dy);
+      
+      // Apply force if cursor is close enough
+      const pushRadius = 150; // How far the cursor affects the name
+      const pushStrength = 0.5; // How strongly the cursor pushes
+      
+      if (distance < pushRadius) {
+        // Calculate force based on distance (closer = stronger)
+        const force = (1 - distance / pushRadius) * pushStrength;
+        
+        // Normalize direction and apply force
+        const forceX = (dx / distance) * force;
+        const forceY = (dy / distance) * force;
+        
+        nameVelocity.x += forceX;
+        nameVelocity.y += forceY;
+      }
+      
+      // Apply spring force to return to original position
+      const springStrength = 0.05;
+      const springX = (nameOriginalPosition.x - namePosition.x) * springStrength;
+      const springY = (nameOriginalPosition.y - namePosition.y) * springStrength;
+      
+      nameVelocity.x += springX;
+      nameVelocity.y += springY;
+      
+      // Apply friction
+      const friction = 0.85;
+      nameVelocity.x *= friction;
+      nameVelocity.y *= friction;
+      
+      // Update position
+      namePosition.x += nameVelocity.x;
+      namePosition.y += nameVelocity.y;
+      
+      // Apply transformation
+      const translateX = namePosition.x - nameOriginalPosition.x;
+      const translateY = namePosition.y - nameOriginalPosition.y;
+      nameElement.style.transform = `translate(${translateX}px, ${translateY}px)`;
+    }
+    
+    // Initialize physics after the page loads
+    window.addEventListener('load', initPhysics);
+    window.addEventListener('resize', initPhysics);
   </script>
 </body>
 </html>
