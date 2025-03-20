@@ -129,12 +129,6 @@ a {
   a {
     cursor: pointer !important;
   }
-
-  .social-links a:hover, .social-icon:hover {
-    /* Mobile hover effects */
-    transform: scale(1.2);
-    box-shadow: none;
-  }
 }
 
 @media (min-width: 1024px) {
@@ -218,19 +212,28 @@ a {
   }
 }
 
-/* Updated hover effects with larger scale */
+/* Remove all hover effects from social icons */
 .social-icon:hover {
-  filter: brightness(1.5) contrast(1.2);
-  transform: scale(1);
+  filter: brightness(1) contrast(1);
+  transform: none;
   box-shadow: none;
   background-color: transparent;
 }
 
 .social-links a:hover {
   background-color: transparent;
-  transform: scale(1);
+  transform: none;
   box-shadow: none;
-  border-radius: 50%;
+  border-radius: 0;
+}
+
+/* Also remove the mobile hover effects */
+@media (max-width: 768px) {
+  .social-links a:hover, .social-icon:hover {
+    /* Remove mobile hover effects */
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 .cursor-dot {

@@ -102,30 +102,25 @@
       }
     });
     
-    // Gravity physics simulation
+    // Simplified Google Gravity style physics
     class GravityPhysics {
       constructor() {
         this.nameElement = document.getElementById('pushable-name');
         this.socialLinksElement = document.querySelector('.social-links');
-        this.gravity = 0.5;
+        this.gravity = 0.3;
         this.friction = 0.95;
-        this.bounce = 0.7;
+        this.bounce = 0.6;
         this.position = { x: 0, y: 0 };
         this.velocity = { x: 0, y: 0 };
         this.originalPosition = { x: 0, y: 0 };
-        this.isOnGround = false;
-        this.isActive = false;
-        
-        // Get the boundaries
-        this.boundaries = {
-          floor: window.innerHeight
-        };
-        
-        // Setup interactions
-        this.setupInteractions();
         
         // Initialize physics
         this.initPhysics();
+        
+        // Automatically start the physics after a delay
+        setTimeout(() => {
+          this.activateGravity();
+        }, 2000);
       }
       
       initPhysics() {
@@ -138,63 +133,22 @@
         
         // Calculate floor as the top of social links element
         const socialRect = this.socialLinksElement.getBoundingClientRect();
-        this.boundaries.floor = socialRect.top - nameRect.height / 2;
-      }
-      
-      setupInteractions() {
-        // Click event to toggle gravity
-        this.nameElement.addEventListener('click', () => {
-          if (!this.isActive) {
-            this.activateGravity();
-          } else {
-            this.resetPosition();
-          }
-        });
-        
-        // Button to activate gravity
-        window.addEventListener('keydown', (e) => {
-          if (e.key === 'g' || e.key === 'G') {
-            if (!this.isActive) {
-              this.activateGravity();
-            } else {
-              this.resetPosition();
-            }
-          }
-        });
-        
-        // Window resize handling
-        window.addEventListener('resize', () => {
-          this.initPhysics();
-          if (this.isActive) {
-            this.resetPosition();
-          }
-        });
+        this.boundaries = {
+          floor: socialRect.top - nameRect.height / 2
+        };
       }
       
       activateGravity() {
-        this.isActive = true;
-        this.velocity = { x: 0, y: 0 };
+        this.velocity = { x: 0, y: 0.5 }; // Start with a small downward velocity
         this.animateGravity();
       }
       
-      resetPosition() {
-        this.isActive = false;
-        this.nameElement.style.transition = 'transform 0.5s ease-out';
-        this.nameElement.style.transform = 'translate(0, 0)';
-        setTimeout(() => {
-          this.nameElement.style.transition = 'none';
-        }, 500);
-      }
-      
       animateGravity() {
-        if (!this.isActive) return;
-        
         // Apply gravity
         this.velocity.y += this.gravity;
         
         // Update position
         this.position.y += this.velocity.y;
-        this.position.x += this.velocity.x;
         
         // Check floor collision
         if (this.position.y > this.boundaries.floor) {
@@ -222,7 +176,9 @@
     
     // Initialize physics after the page loads
     window.addEventListener('load', () => {
-      const physics = new GravityPhysics();
+      if (!isMobileOrTablet()) {
+        const physics = new GravityPhysics();
+      }
     });
   </script>
 </body>
