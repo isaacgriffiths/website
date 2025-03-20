@@ -1,9 +1,6 @@
 /* Tailwind CSS */
 @import 'https://cdn.tailwindcss.com';
 
-/* Import modern Apple-like fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-
 /* Custom cursor and layout styles */
 :root {
   /* Custom cursor styling variables */
@@ -11,18 +8,15 @@
   --cursor-color: rgba(255, 255, 255, 0.8);
   --glow-color: rgba(80, 120, 200, 0.6);
   
-  /* Platform-specific font stacks */
-  --apple-system: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'San Francisco';
-  --windows-system: 'Helvetica', 'Helvetica Neue', 'Segoe UI', system-ui, 'Arial';
-  --fallback-system: 'Inter', 'Roboto', Arial, sans-serif;
+  /* Main font stack - Helvetica only */
+  --font-stack: 'Helvetica', 'Helvetica Neue', 'Arial', sans-serif;
   
-  /* iOS vh fix */
+  /* vh fix */
   --vh: 1vh;
 }
 
 html, body {
-  /* Use system font stacks based on platform */
-  font-family: var(--apple-system), var(--windows-system), var(--fallback-system);
+  font-family: var(--font-stack);
   background-color: black;
   color: white;
   margin: 0;
@@ -30,19 +24,21 @@ html, body {
   overflow: hidden;
   height: 100%;
   cursor: none;
-  /* Fix for iOS height issues */
   min-height: -webkit-fill-available;
 }
 
-/* Fix for iOS 100vh issue */
+/* Fix for 100vh issue on mobile */
 .h-screen {
   height: 100vh; /* Fallback */
   height: calc(var(--vh, 1vh) * 100);
-  /* iOS height fix */
-  height: -webkit-fill-available;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 a, a * {
@@ -51,61 +47,15 @@ a, a * {
 
 /* Custom font styling */
 .name-title {
-  /* Use system font stacks based on platform */
-  font-family: var(--apple-system), var(--windows-system), var(--fallback-system);
-  font-size: 8.5vw;
+  font-family: var(--font-stack);
+  font-size: 6vw;
   font-weight: 700;
   letter-spacing: -0.05em;
   margin: 0;
   line-height: 1.1;
 }
 
-/* Glowing i dot in Griffiths */
-.i-with-dot {
-  position: relative;
-  display: inline-block;
-}
-
-.i-with-dot::after {
-  content: '';
-  position: absolute;
-  top: 0.15em;
-  right: -0.05em;
-  width: 0.15em;
-  height: 0.15em;
-  border-radius: 50%;
-  background-color: white;
-  box-shadow: 0 0 6px #ffffff, 0 0 12px var(--glow-color), 0 0 20px var(--glow-color);
-  animation: pulse 2s infinite ease-in-out;
-}
-
-@keyframes pulse {
-  0% {
-    opacity: 0.7;
-    box-shadow: 0 0 6px #ffffff, 0 0 12px var(--glow-color), 0 0 20px var(--glow-color);
-  }
-  50% {
-    opacity: 1;
-    box-shadow: 0 0 10px #ffffff, 0 0 20px var(--glow-color), 0 0 30px var(--glow-color);
-  }
-  100% {
-    opacity: 0.7;
-    box-shadow: 0 0 6px #ffffff, 0 0 12px var(--glow-color), 0 0 20px var(--glow-color);
-  }
-}
-
-.subtitle {
-  /* Use system font stacks based on platform */
-  font-family: var(--apple-system), var(--windows-system), var(--fallback-system);
-  font-size: 1.2rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  margin-top: 1rem;
-  text-transform: uppercase;
-  opacity: 0.7;
-}
-
-/* Custom cursor styling */
+/* Custom cursor styling with improved cross-browser compatibility */
 .cursor-dot {
   pointer-events: none;
   position: fixed;
@@ -119,6 +69,13 @@ a, a * {
   transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%));
   transition: transform 0.1s ease-out, opacity 0.3s ease;
   z-index: 9999;
+  will-change: transform;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%));
+  -moz-transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%));
+  -webkit-transition: transform 0.1s ease-out, opacity 0.3s ease;
+  -moz-transition: transform 0.1s ease-out, opacity 0.3s ease;
 }
 
 .cursor-dot-inner {
@@ -130,8 +87,13 @@ a, a * {
   border-radius: 50%;
   background-color: white;
   transform: translate(-50%, -50%);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
 }
 
+/* Cursor light with improved cross-browser compatibility */
 .cursor-light {
   pointer-events: none;
   position: fixed;
@@ -140,6 +102,11 @@ a, a * {
   width: 100%;
   height: 100%;
   z-index: 1;
+  background: transparent;
+  will-change: background;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Social icon hover styles */
@@ -163,48 +130,22 @@ a, a * {
   }
   
   .name-title {
-    font-size: 15vw;
-  }
-  
-  .subtitle {
-    font-size: 1rem;
+    font-size: 12vw;
   }
 }
 
-/* iOS specific adjustments */
-@supports (-webkit-touch-callout: none) {
-  .h-screen {
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Ensure proper centering on iOS Safari */
-  .apple-device .h-screen {
-    padding-bottom: 0;
-    padding-top: 0;
-    margin-top: 0;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-  
-  /* Safari iOS specific fix */
-  @media not all and (min-resolution:.001dpcm) { 
-    @supports (-webkit-appearance:none) {
-      .apple-device .h-screen {
-        height: 100% !important;
-        position: absolute !important;
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-      }
-    }
-  }
+/* Ensure content is centered */
+.name-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* Tailwind utilities maintained as custom CSS */
@@ -214,10 +155,6 @@ a, a * {
 
 .text-white {
   color: white;
-}
-
-.text-gray-300 {
-  color: rgb(209, 213, 219);
 }
 
 .text-center {
@@ -242,7 +179,6 @@ a, a * {
 
 .min-h-screen {
   min-height: 100vh;
-  /* iOS height fix */
   min-height: -webkit-fill-available;
   min-height: calc(var(--vh, 1vh) * 100);
 }
@@ -330,94 +266,4 @@ a, a * {
   .lg\:max-w-\[896px\] {
     max-width: 896px;
   }
-}
-
-/* Platform-specific styles */
-@supports (-webkit-appearance:none) and (not (-ms-ime-align:auto)) {
-  /* iOS/macOS specific */
-  html, body, .name-title, .subtitle {
-    font-family: var(--apple-system), var(--fallback-system);
-  }
-}
-
-@supports (-ms-ime-align:auto) {
-  /* Edge specific */
-  html, body, .name-title, .subtitle {
-    font-family: var(--windows-system), var(--fallback-system);
-  }
-}
-
-/* Windows detection - fallback for all other browsers */
-@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
-  /* IE10+ CSS */
-  html, body, .name-title, .subtitle {
-    font-family: var(--windows-system), var(--fallback-system);
-  }
-}
-
-/* Platform-specific classes */
-.apple-device html, 
-.apple-device body, 
-.apple-device .name-title, 
-.apple-device .subtitle {
-  font-family: var(--apple-system), var(--fallback-system);
-}
-
-.windows-device html, 
-.windows-device body, 
-.windows-device .name-title, 
-.windows-device .subtitle {
-  font-family: var(--windows-system), var(--fallback-system);
-}
-
-.other-device html, 
-.other-device body, 
-.other-device .name-title, 
-.other-device .subtitle {
-  font-family: var(--fallback-system);
-}
-
-/* iOS Safari-specific centering fixes */
-@media screen and (max-width: 768px) {
-  .apple-device .name-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-}
-
-/* Target Safari iOS only */
-@media screen and (max-device-width: 480px) {
-  @supports (-webkit-touch-callout: none) {
-    .name-container {
-      top: 45% !important; /* Move it slightly up from center */
-    }
-  }
-}
-
-/* White separator bar - consistent across all platforms */
-.separator-bar {
-  width: 100px;
-  height: 3px;
-  background-color: white;
-  margin: 35px auto;
-  position: relative;
-  display: block;
-  opacity: 0.9;
-}
-
-/* iOS specific positioning adjustments */
-/*
-.ios-device .separator-bar {
-  margin: 30px auto;
-}
-*/
-
-.ios-device .name-container {
-  margin-top: -10vh; /* Move everything up a bit on iOS */
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 } 
