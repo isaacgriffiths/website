@@ -5,183 +5,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Isaac Griffiths - Tech & Automation</title>
   <link rel="stylesheet" href="stylesheet.css">
-  <!-- Add Google Fonts link for the new subtitle font -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
-  <!-- Add favicon -->
-  <link rel="icon" href="data:image/svg+xml,<svg width='77.979' height='64.014' viewBox='0 0 77.979 64.014' xmlns='http://www.w3.org/2000/svg'><g id='svgGroup' stroke-linecap='round' fill-rule='evenodd' font-size='9pt' stroke='%23000' stroke-width='0.25mm' fill='%23fff' style='stroke:%23000;stroke-width:0.25mm;fill:%23fff'><path d='M 76.27 3.662 L 76.27 16.943 L 70.947 17.432 L 70.947 4.834 L 71.924 7.52 A 8.945 8.945 0 0 0 70.566 6.834 Q 69.139 6.247 67.079 5.837 A 30.067 30.067 0 0 0 66.943 5.811 A 34.808 34.808 0 0 0 62.776 5.251 A 29.458 29.458 0 0 0 60.693 5.176 A 28.078 28.078 0 0 0 56.434 5.481 Q 54.051 5.847 52.073 6.652 A 15.494 15.494 0 0 0 50.586 7.349 A 10.929 10.929 0 0 0 46.859 10.705 Q 45.47 12.647 44.531 15.405 A 29.648 29.648 0 0 0 43.476 19.59 Q 42.662 24.027 42.548 30.278 A 114.572 114.572 0 0 0 42.529 32.373 A 69.557 69.557 0 0 0 42.766 38.302 Q 43.25 43.948 44.727 47.852 A 22.47 22.47 0 0 0 46.536 51.612 Q 48.354 54.592 50.903 56.25 A 16.065 16.065 0 0 0 58.485 58.773 A 19.979 19.979 0 0 0 60.107 58.838 A 31.622 31.622 0 0 0 66.166 58.237 A 34.905 34.905 0 0 0 66.577 58.154 A 26.35 26.35 0 0 0 69.989 57.19 Q 71.643 56.606 73.398 55.776 A 42.449 42.449 0 0 0 73.633 55.664 L 72.07 58.643 L 72.07 33.545 L 74.512 36.23 L 60.791 36.23 L 60.791 31.055 L 77.979 31.055 L 77.979 59.18 A 25.744 25.744 0 0 1 76.348 60.064 Q 74.311 61.085 71.265 62.28 A 21.788 21.788 0 0 1 67.569 63.337 Q 65.659 63.717 63.413 63.884 A 50.036 50.036 0 0 1 59.717 64.014 A 24.207 24.207 0 0 1 52.367 62.928 A 21.387 21.387 0 0 1 47.632 60.767 A 19.085 19.085 0 0 1 42.018 55.413 A 27.047 27.047 0 0 1 39.307 50.513 A 32.458 32.458 0 0 1 37.403 44.387 Q 36.771 41.413 36.494 37.937 A 72.083 72.083 0 0 1 36.279 32.227 Q 36.279 24.497 37.412 18.771 A 36.27 36.27 0 0 1 38.818 13.574 A 23.901 23.901 0 0 1 41.223 8.628 A 17.087 17.087 0 0 1 46.655 3.247 A 20.711 20.711 0 0 1 52.679 0.812 Q 55.316 0.178 58.397 0.039 A 39.115 39.115 0 0 1 60.156 0 A 36.491 36.491 0 0 1 64.36 0.255 A 47.903 47.903 0 0 1 68.018 0.83 Q 72.266 1.66 76.27 3.662 Z M 25.195 63.525 L 0 63.525 L 0 58.35 L 11.67 58.35 L 9.473 60.547 L 9.473 3.809 L 11.67 6.006 L 0 6.006 L 0 0.83 L 25.195 0.83 L 25.195 6.006 L 13.525 6.006 L 15.723 3.809 L 15.723 60.547 L 13.525 58.35 L 25.195 58.35 L 25.195 63.525 Z' vector-effect='non-scaling-stroke'/></g></svg>" type="image/svg+xml">
+
+  <!-- Favicon: "IG" in Roboto Condensed -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text x='10' y='70' font-family='Roboto Condensed' font-size='80' fill='white'>IG</text></svg>" type="image/svg+xml">
 </head>
 <body>
-  <!-- Custom filled cursor with inversion -->
+
+  <!-- Orb Cursor (Hidden on Mobile & Tablets) -->
   <div class="cursor-dot">
     <div class="cursor-dot-inner"></div>
   </div>
   
-  <!-- Subtle cursor light with slightly brighter glow and larger fade -->
+  <!-- Cursor Light Effect (Hidden on Mobile & Tablets) -->
   <div class="cursor-light" id="cursor-light"></div>
-  
+
   <div class="bg-container">
     <div class="content">
       <h1 id="pushable-name">Isaac Griffiths</h1>
       <p>TECH & AUTOMATION</p>
       
-      <div class="social-links" style="margin-top: 20px; display: flex; justify-content: center; align-items: center;">
-        <!-- Background glow for icons -->
-        <div class="social-glow"></div>
-        
+      <div class="social-links">
         <!-- LinkedIn -->
-        <a href="https://www.linkedin.com/in/isaacgriffiths/" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center; cursor: none !important;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="social-icon" style="cursor: none !important;">
+        <a href="https://www.linkedin.com/in/isaacgriffiths/" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="social-icon">
             <path fill="white" d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z"/>
           </svg>
         </a>
-        
-        <!-- TikTok with musical note logo -->
-        <a href="https://www.tiktok.com/@isaacgriffiths" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center; cursor: none !important;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="social-icon" style="cursor: none !important;">
+
+        <!-- TikTok -->
+        <a href="https://www.tiktok.com/@isaacgriffiths" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="social-icon">
             <path fill="white" d="M16.6 5.82s.51.5 0 0A4.278 4.278 0 0 1 15.54 3h-3.09v12.4a2.592 2.592 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48z"/>
           </svg>
         </a>
-        
-        <!-- Instagram with camera logo -->
-        <a href="https://www.instagram.com/isaacrgriffiths/" target="_blank" rel="noopener noreferrer" style="display: flex; justify-content: center; align-items: center; cursor: none !important;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="social-icon" style="cursor: none !important;">
-            <path fill="white" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/isaacrgriffiths/" target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="social-icon">
+            <path fill="white" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069z"/>
           </svg>
         </a>
       </div>
     </div>
   </div>
 
-  <script>
-    // Mouse position tracking for cursor effects
-    let mousePosition = { x: 0, y: 0 };
-    const cursorLight = document.getElementById('cursor-light');
-    
-    // Check if device is mobile/tablet
-    const isMobileOrTablet = () => {
-      return window.innerWidth <= 768;
-    };
-    
-    function handleMouseMove(e) {
-      // Only update cursor on desktop
-      if (isMobileOrTablet()) return;
-      
-      // Update state for the glow effect
-      mousePosition.x = e.clientX;
-      mousePosition.y = e.clientY;
-      
-      // Update CSS variables for cursor dot
-      document.documentElement.style.setProperty('--x', `${e.clientX}px`);
-      document.documentElement.style.setProperty('--y', `${e.clientY}px`);
-      
-      // Update the cursor light background
-      cursorLight.style.background = `radial-gradient(500px at ${mousePosition.x}px ${mousePosition.y}px, rgba(80, 120, 200, 0.25) 0%, rgba(60, 90, 160, 0.18) 40%, transparent 80%)`;
-    }
-    
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    // Ensure no default cursor on social links
-    const socialLinks = document.querySelectorAll('.social-links a, .social-links svg, .social-links path');
-    socialLinks.forEach(link => {
-      link.addEventListener('mouseenter', () => {
-        if (!isMobileOrTablet()) {
-          document.body.style.cursor = 'none';
-        }
-      });
-      link.addEventListener('mouseleave', () => {
-        if (!isMobileOrTablet()) {
-          document.body.style.cursor = 'none';
-        }
-      });
-    });
-    
-    // Check for window resize to handle responsive changes
-    window.addEventListener('resize', () => {
-      if (isMobileOrTablet()) {
-        document.body.style.cursor = 'auto';
-      } else {
-        document.body.style.cursor = 'none';
-      }
-    });
-    
-    // Simplified Google Gravity style physics
-    class GravityPhysics {
-      constructor() {
-        this.nameElement = document.getElementById('pushable-name');
-        this.socialLinksElement = document.querySelector('.social-links');
-        this.gravity = 0.3;
-        this.friction = 0.95;
-        this.bounce = 0.6;
-        this.position = { x: 0, y: 0 };
-        this.velocity = { x: 0, y: 0 };
-        this.originalPosition = { x: 0, y: 0 };
-        
-        // Initialize physics
-        this.initPhysics();
-        
-        // Automatically start the physics after a delay
-        setTimeout(() => {
-          this.activateGravity();
-        }, 2000);
-      }
-      
-      initPhysics() {
-        const nameRect = this.nameElement.getBoundingClientRect();
-        this.originalPosition = {
-          x: nameRect.left,
-          y: nameRect.top
-        };
-        this.position = { ...this.originalPosition };
-        
-        // Calculate floor as the top of social links element
-        const socialRect = this.socialLinksElement.getBoundingClientRect();
-        this.boundaries = {
-          floor: socialRect.top - nameRect.height / 2
-        };
-      }
-      
-      activateGravity() {
-        this.velocity = { x: 0, y: 0.5 }; // Start with a small downward velocity
-        this.animateGravity();
-      }
-      
-      animateGravity() {
-        // Apply gravity
-        this.velocity.y += this.gravity;
-        
-        // Update position
-        this.position.y += this.velocity.y;
-        
-        // Check floor collision
-        if (this.position.y > this.boundaries.floor) {
-          this.position.y = this.boundaries.floor;
-          this.velocity.y *= -this.bounce;
-          
-          // Apply friction when hitting the ground
-          this.velocity.x *= this.friction;
-          
-          // Stop if velocity is very small
-          if (Math.abs(this.velocity.y) < 0.5) {
-            this.velocity.y = 0;
-          }
-        }
-        
-        // Apply the transformation
-        const translateX = this.position.x - this.originalPosition.x;
-        const translateY = this.position.y - this.originalPosition.y;
-        this.nameElement.style.transform = `translate(${translateX}px, ${translateY}px)`;
-        
-        // Continue animation
-        requestAnimationFrame(() => this.animateGravity());
-      }
-    }
-    
-    // Initialize physics after the page loads
-    window.addEventListener('load', () => {
-      if (!isMobileOrTablet()) {
-        const physics = new GravityPhysics();
-      }
-    });
-  </script>
 </body>
 </html>
