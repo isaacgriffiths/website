@@ -59,7 +59,9 @@ h1 {
   animation: slideUp 0.8s ease forwards;
   position: relative;
   will-change: transform;
-  transition: transform 0.05s linear;
+  transition: none;
+  cursor: pointer;
+  user-select: none;
 }
 
 @media (min-width: 768px) {
