@@ -13,7 +13,7 @@
   
   /* Platform-specific font stacks */
   --apple-system: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'San Francisco';
-  --windows-system: 'Segoe UI', system-ui, 'Arial', 'Helvetica Neue';
+  --windows-system: 'Helvetica', 'Helvetica Neue', 'Segoe UI', system-ui, 'Arial';
   --fallback-system: 'Inter', 'Roboto', Arial, sans-serif;
   
   /* iOS vh fix */
@@ -398,12 +398,13 @@ a, a * {
 
 /* White separator bar - consistent across all platforms */
 .separator-bar {
-  width: 80px;
-  height: 2px;
-  background-color: rgba(255, 255, 255, 0.8);
-  margin: 30px auto;
+  width: 100px;
+  height: 3px;
+  background-color: white;
+  margin: 35px auto;
   position: relative;
   display: block;
+  opacity: 0.9;
 }
 
 /* iOS specific positioning adjustments */
