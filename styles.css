@@ -1,6 +1,9 @@
 /* Tailwind CSS */
 @import 'https://cdn.tailwindcss.com';
 
+/* Import modern Apple-like fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 /* Custom cursor and layout styles */
 :root {
   --x: 0px;
@@ -13,6 +16,7 @@ html, body {
   width: 100%;
   overflow: hidden;
   position: fixed;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif;
 }
 
 a, a * {
@@ -99,11 +103,13 @@ a, a * {
   scale: 1 !important;
 }
 
-/* Enhanced tapered structure styling */
+/* Enhanced tapered structure styling with modern fonts */
 .name-title {
-  font-size: 6rem;
+  font-size: 5.5rem;
   line-height: 1;
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif;
 }
 
 .subtitle {
@@ -112,6 +118,9 @@ a, a * {
   margin-top: 8px;
   margin-bottom: 25px;
   opacity: 0.85;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif;
 }
 
 /* Increased taper for responsiveness */
