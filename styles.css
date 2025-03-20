@@ -15,6 +15,10 @@ html, body {
   position: fixed;
 }
 
+a, a * {
+  cursor: none !important;
+}
+
 .cursor-dot {
   position: fixed;
   pointer-events: none;
@@ -95,37 +99,45 @@ html, body {
   scale: 1 !important;
 }
 
-/* Tapered structure styling */
+/* Enhanced tapered structure styling */
 .name-title {
-  font-size: 5rem;
-  line-height: 1.1;
+  font-size: 6rem;
+  line-height: 1;
   font-weight: 700;
 }
 
 .subtitle {
-  font-size: 1.5rem;
-  letter-spacing: 0.2em;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  font-size: 1.3rem;
+  letter-spacing: 0.25em;
+  margin-top: 8px;
+  margin-bottom: 25px;
+  opacity: 0.85;
 }
 
+/* Increased taper for responsiveness */
 @media (max-width: 768px) {
   .name-title {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
   }
   
   .subtitle {
-    font-size: 1.2rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.22em;
+    margin-top: 5px;
+    margin-bottom: 18px;
   }
 }
 
 @media (max-width: 480px) {
   .name-title {
-    font-size: 2.8rem; 
+    font-size: 2.5rem; 
   }
   
   .subtitle {
-    font-size: 1rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    margin-top: 3px;
+    margin-bottom: 15px;
   }
 }
 
