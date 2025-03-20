@@ -1,20 +1,31 @@
-/* Remove hover effects */
-.social-icon:hover, .social-links a:hover {
+/* Completely remove all hover effects */
+.social-icon:hover, 
+.social-links a:hover, 
+.social-links a svg:hover, 
+.social-links a path:hover {
   transform: none !important;
   box-shadow: none !important;
   background-color: transparent !important;
+  filter: brightness(1.5) contrast(1.2) !important;
+  opacity: 1 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  outline: none !important;
+  transition: none !important;
 }
 
 .social-links a {
   padding: 16px;
   margin: 0 8px;
   background-color: transparent;
+  transition: none;
 }
 
 .social-icon {
   width: 1.5rem;
   height: 1.5rem;
   filter: brightness(1.5) contrast(1.2);
+  transition: none;
 }
 
 /* Root variables for cursor */
