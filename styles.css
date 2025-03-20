@@ -8,6 +8,7 @@
 :root {
   --x: 0px;
   --y: 0px;
+  --apple-system: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', system-ui, sans-serif;
 }
 
 html, body {
@@ -16,7 +17,7 @@ html, body {
   width: 100%;
   overflow: hidden;
   position: fixed;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif;
+  font-family: var(--apple-system);
 }
 
 a, a * {
@@ -109,7 +110,7 @@ a, a * {
   line-height: 1;
   font-weight: 600;
   letter-spacing: -0.03em;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif;
+  font-family: var(--apple-system);
 }
 
 .subtitle {
@@ -120,7 +121,7 @@ a, a * {
   opacity: 0.85;
   font-weight: 400;
   text-transform: uppercase;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', sans-serif;
+  font-family: var(--apple-system);
 }
 
 /* Increased taper for responsiveness */
