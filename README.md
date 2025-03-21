@@ -1,6 +1,6 @@
 # Isaac Griffiths - Personal Website
 
-isaacgriffiths.com
+[Website](isaacgriffiths.com)
 
 A minimalist personal website showcasing my professional identity in tech and automation.
 
