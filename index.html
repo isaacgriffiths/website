@@ -114,15 +114,23 @@
         cursorDot.style.transform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
         cursorDot.style.webkitTransform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
         cursorDot.style.mozTransform = `translate(calc(${e.clientX}px - 50%), calc(${e.clientY}px - 50%))`;
+        
+        // Make sure the cursor dot is visible and properly rendered as an orb
+        cursorDot.style.width = 'var(--cursor-size)';
+        cursorDot.style.height = 'var(--cursor-size)';
+        cursorDot.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+        cursorDot.style.boxShadow = '0 0 12px 4px rgba(200, 220, 255, 0.8)';
+        cursorDot.style.borderRadius = '50%';
+        cursorDot.style.opacity = '1';
       }
       
       // Create a smoother light gradient with reduced range
       const gradientSize = '800px'; // Reduced from 1800px
-      const glowColor1 = 'rgba(150, 180, 255, 0.12)';
-      const glowColor2 = 'rgba(140, 170, 240, 0.09)';
-      const glowColor3 = 'rgba(130, 160, 230, 0.06)';
-      const glowColor4 = 'rgba(120, 150, 220, 0.03)';
-      const glowColor5 = 'rgba(110, 140, 210, 0.01)';
+      const glowColor1 = 'rgba(150, 180, 255, 0.15)'; // Slightly increased opacity
+      const glowColor2 = 'rgba(140, 170, 240, 0.12)';
+      const glowColor3 = 'rgba(130, 160, 230, 0.09)';
+      const glowColor4 = 'rgba(120, 150, 220, 0.06)';
+      const glowColor5 = 'rgba(110, 140, 210, 0.03)';
       const transparentColor = 'transparent';
       
       // Update the cursor light background with smoother transitions and shorter distance
