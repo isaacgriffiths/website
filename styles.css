@@ -145,13 +145,21 @@ a, a * {
   -webkit-filter: blur(8px);
 }
 
-/* Social links styles - adding more spacing */
+/* Social links styles - removing padding while keeping spacing */
 .social-links {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 50px;
   gap: 45px;
+  padding: 0; /* Explicitly remove any padding */
+}
+
+.social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Remove padding from individual links */
 }
 
 /* Social icon hover styles */
